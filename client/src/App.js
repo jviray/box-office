@@ -54,7 +54,7 @@ class App extends Component {
           <div className="container">
             <div className="page-header">
               <p>Address: { this.state.drizzleState.accounts[0] }</p>
-              <p>Balance: { this.state.drizzleState.accountBalances[this.state.drizzleState.accounts[0]] }</p>
+              <p>Balance: { (this.state.drizzleState.accountBalances[this.state.drizzleState.accounts[0]] / 10 ** 18) + ' ETH' }</p>
             </div>
           </div>
         </div>
