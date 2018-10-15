@@ -1,3 +1,11 @@
 .page-header {
-  padding-top: 10px;
+  padding-top: 30px;
+}
+
+#eth-acct-info .panel-heading {
+  text-align: center;
+}
+
+#eth-acct-info .panel-body {
+  padding-top: 5px;
 }

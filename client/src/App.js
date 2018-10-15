@@ -40,7 +40,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        // NAVIGATION BAR
+        {/* NAVIGATION BAR */}
         <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="container">
             <div className="navbar-header">
@@ -49,12 +49,32 @@ class App extends Component {
           </div>
         </nav>
 
-        // MAIN CONTENT
+        {/* MAIN CONTENT */}
         <div style={mainContentDimensions}>
           <div className="container">
             <div className="page-header">
-              <p>Address: { this.state.drizzleState.accounts[0] }</p>
-              <p>Balance: { (this.state.drizzleState.accountBalances[this.state.drizzleState.accounts[0]] / 10 ** 18) + ' ETH' }</p>
+              <h3>UPCOMING SHOWS</h3>
+            </div>
+
+            <div className="row">
+
+              {/* SHOW LIST */}
+              <div className="col-xs-12 col-md-8 ">
+
+              </div>
+
+              {/* SIDE PANEL */}
+              <div className="col-xs-12 col-md-4">
+                <div className="panel panel-default" id="eth-acct-info">
+                  <div className="panel-heading">
+                    <h6><b>Your Address:</b></h6>
+                    <h6 className="text-success">{ this.state.drizzleState.accounts[0] }</h6>
+                    <h6><b>Your Balance:</b></h6>
+                    <h6 className="text-success">{ (this.state.drizzleState.accountBalances[this.state.drizzleState.accounts[0]] / 10 ** 18) + ' ETH' }</h6>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
