@@ -2,10 +2,21 @@
   padding-top: 30px;
 }
 
-#eth-acct-info .panel-heading {
+.side-panel {
   text-align: center;
 }
 
-#eth-acct-info .panel-body {
-  padding-top: 5px;
+.form-group .input-group {
+  width: 100%;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.modal .btn-sm {
+  width: 35% !important;
+  margin-top: 5px;
+  font-size: 15px;
+  cursor: pointer;
 }
