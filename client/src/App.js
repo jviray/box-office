@@ -4,7 +4,12 @@ import './App.css';
 class App extends Component {
   state = {
     loading: true,
-    drizzleState: null
+    drizzleState: null,
+    showFields: {
+      name: '',
+      price: ''
+    },
+    shows: []
   };
 
   componentDidMount() {
@@ -21,13 +26,39 @@ class App extends Component {
         this.setState({ loading: false, drizzleState });
       }
     });
-
-
   }
 
   compomentWillUnmount() {
     this.unsubscribe();
   }
+
+  closeModal = () => {
+    document.getElementById("close-modal").click();
+  };
+
+  onInputChange = (evt) => {
+    const showFields = this.state.showFields;
+    showFields[evt.target.name] = evt.target.value;
+    this.setState({ showFields });
+  };
+
+  onFormSubmit = (evt) => {
+    const shows = [
+      ...this.state.shows,
+      this.state.showFields,
+    ];
+
+    this.setState({
+      shows,
+      showFields: {
+        name: '',
+        price: ''
+      }
+    });
+
+    evt.preventDefault();
+    this.closeModal();
+  };
 
   render() {
     const mainContentDimensions = {
@@ -60,6 +91,7 @@ class App extends Component {
                 <div className="modal-content">
                   <div className="modal-header">
                     <button className="close"
+                            id="close-modal"
                             type="button" data-dismiss="modal">X</button>
                     <h3 className="modal-title">Enter Show Details</h3>
                   </div>
@@ -67,20 +99,24 @@ class App extends Component {
                   <div className="modal-body">
 
                     {/* ADD SHOW MODAL FORM */}
-                    <form>
+                    <form onSubmit={this.onFormSubmit}>
                       <div className="form-group">
-                        <div className="input-group">
                         <input type="text"
                                className="form-control"
-                               placeholder="Enter artist's name" />
-                        </div>
+                               placeholder="Enter artist's name"
+                               name='name'
+                               value={this.state.showFields.name}
+                               onChange={this.onInputChange} />
                       </div>
 
                       <div className="form-group">
                         <div className="input-group">
                           <input type="text"
                                  className="form-control"
-                                 placeholder="Enter ticket price" />
+                                 placeholder="Enter ticket price"
+                                 name='price'
+                                 value={this.state.showFields.price}
+                                 onChange={this.onInputChange} />
                           <span className="input-group-addon">ETH</span>
                         </div>
                       </div>
@@ -105,7 +141,6 @@ class App extends Component {
             </div>
 
             <div className="row">
-
               {/* SHOW LIST */}
               <div className="col-xs-12 col-md-8 ">
 
@@ -133,7 +168,11 @@ class App extends Component {
                   </div>
                 </div>
               </div>
+            </div>
 
+            <div>
+              <script>
+              </script>
             </div>
           </div>
         </div>

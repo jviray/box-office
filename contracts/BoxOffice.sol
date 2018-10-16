@@ -37,6 +37,14 @@ contract BoxOffice {
         return shows[nameToId[_name]].didUserBuy[_userAddress];
     }
 
+    function getShowCount() public view returns (uint) {
+        return shows.length;
+    }
+
+    function getUpcomingArtistAtIndex(uint _index) public view returns (string) {
+        return shows[_index].artistName;
+    }
+
     function stringToBytes32(string memory _source) private pure returns (bytes32 result) {
         bytes memory tempEmptyStringTest = bytes(_source);
         if (tempEmptyStringTest.length == 0) {
